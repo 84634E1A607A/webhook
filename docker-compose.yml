@@ -1,0 +1,12 @@
+services:
+  webhook:
+    build: .
+    ports:
+      - "192.168.210.1:28000:8000"
+    volumes:
+      - ./db/:/app/db/
+      - /webhook-git-data:/git/
+      - /srv/webhook-git-data/ssh:/root/.ssh/
+      - .:/app/
+    restart: unless-stopped
+    
